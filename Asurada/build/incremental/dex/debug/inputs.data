@@ -1,0 +1,31 @@
+# incremental data. DO NOT EDIT.
+# format is <lastModified> <length> <SHA-1> <path>
+# Encoding is UTF-8
+1374740299000 2277 000724d42b24bb0d4e7c0a5245bc2728761b2524 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/util/SystemUiHiderHoneycomb.class
+1374740833000 862 821a5999d5bfc9227c2309887f16afef0307be76 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/FullscreenActivity$5.class
+1374740833000 3587 9ceed28060fec44f581e810ffdd086bc4e8b0bbf /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/FullscreenActivity.class
+1374740582000 427 f45568686c75ce31138a176c1e36e3e144a1e5c0 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/R$layout.class
+1374740582000 608 0a820d1eea0d6d35ef2bd8fd1f6b84f7f1120302 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/R$style.class
+1374740582000 489 5d15b31a16323a9fd70d7b54b512f56a27f3e040 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/R$string.class
+1374740299000 793 09004d84cc68f968ef88aded31bea3cc4c6bc5f0 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/R.class
+1374740299000 1041 427599231a56c24b0d333bf01c6e9740d34b205a /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/AudioCommander$2.class
+1374740582000 648 e26b4285de74d618213dc9993a6b3708bf85a307 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/R$styleable.class
+1374740299000 357 fb223d808134850538f9a6ae49e489b1a8dee746 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/BuildConfig.class
+1374740833000 1098 032e598aee6fbbdeb6e2895510c9ca86e1d0b68b /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/FullscreenActivity$3.class
+1374740582000 535 c6ebf98745e82e47f4c60d789cc7974cd53fd435 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/R$id.class
+1369432937000 490914 3fe75433da602500cc71fcc1c46e5550291dd45d /Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-v4/13.0.0/support-v4-13.0.0.jar
+1374740299000 309 f1cba53143311b9b3ef61a4b7ee98f5eca64bbc3 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/util/SystemUiHider$OnVisibilityChangeListener.class
+1374740299000 663 e2b3b144c160cc1667b887d5e08a6b35c2b9cce8 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/util/SystemUiHider$1.class
+1374740299000 356 b587c3b97c6424ff73f46468f96c2e1cea50eb05 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/App.class
+1374740299000 2059 df775d55b79ee98eb4441f6271e044f1ac92758b /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/util/SystemUiHiderHoneycomb$1.class
+1374740299000 418 fa861a9bd21cc981be34eb0c229eaa15de6590a8 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/R$color.class
+1374740299000 425 1a77675c6f8df1812e6f4ac5c542a9964c66091c /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/R$drawable.class
+1374740833000 1037 785d1d43f54957050d592a91750fa5cdbe14c325 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/FullscreenActivity$2.class
+1374740833000 965 938dd3967d5e7001bf4fd593816cbb140e193f40 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/FullscreenActivity$4.class
+1374740582000 440 6ed8d57f06c3e78e1ad8c5a126f70487f47fac6c /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/R$raw.class
+1374740299000 2086 5ed9e56d9095fa53f4821ace1236429e12474314 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/util/SystemUiHider.class
+1374740299000 1489 cbfb932b19df832f0b65365572481e07619d9acb /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/util/SystemUiHiderBase.class
+1374740833000 1318 309a9ad3d0052e1ccde088c6b5a0c2f93ba8feed /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/AudioCommander$1.class
+1374740299000 460 2d936b223c6898b883da86c84c033a9a3d87bdc8 /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/R$attr.class
+1374740833000 1977 98d3ee15326379249f1aaafb3dbf8d27048e0abb /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/FullscreenActivity$1.class
+1374740299000 3683 047bf10fc7e406a59e4115a31129306f173ea7dd /Users/poly/workspace/AsuradaProject/Asurada/build/classes/debug/com/polysfactory/asurada/AudioCommander.class
