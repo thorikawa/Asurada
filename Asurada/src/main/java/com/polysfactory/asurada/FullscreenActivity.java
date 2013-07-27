@@ -4,14 +4,27 @@ import com.polysfactory.asurada.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.speech.tts.TextToSpeech;
+import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -48,6 +61,11 @@ public class FullscreenActivity extends Activity {
      */
     private SystemUiHider mSystemUiHider;
     private AudioCommander mAudioCommander;
+    private SpeechRecognizer mSpeechRecognizer;
+    private SensorManager mSensorManager;
+    private Sensor mProximitySensor;
+    private AsuradaSensorEventListenr mProximitySensorEventListener;
+    private Brain mBrain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,8 +141,19 @@ public class FullscreenActivity extends Activity {
             }
         });
 
+        mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+        mSpeechRecognizer.setRecognitionListener(new AsuradaSpeechRecognitionListener());
+
+        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        mProximitySensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+        mProximitySensorEventListener = new AsuradaSensorEventListenr();
+
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         mAudioCommander = new AudioCommander(this);
+
+        mBrain = new Brain();
+
+        //mAudioCommander.speak("Hey My name is Asurada!");
     }
 
     @Override
@@ -168,5 +197,112 @@ public class FullscreenActivity extends Activity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSensorManager.registerListener(mProximitySensorEventListener, mProximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mSensorManager.unregisterListener(mProximitySensorEventListener);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSpeechRecognizer.destroy();
+    }
+
+    private void startInteraction() {
+        startSpeechRecognition();
+        mAudioCommander.speak("May I help you?");
+    }
+
+    private void startSpeechRecognition() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getPackageName());
+        // intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.JAPAN.toString());
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.US.toString());
+        mSpeechRecognizer.startListening(intent);
+    }
+
+    private class AsuradaSpeechRecognitionListener implements RecognitionListener {
+        @Override
+        public void onReadyForSpeech(Bundle params) {
+            Log.d(App.TAG, "onReadyForSpeech");
+        }
+
+        @Override
+        public void onBeginningOfSpeech() {
+            Log.d(App.TAG, "onBeginningOfSpeech");
+        }
+
+        @Override
+        public void onRmsChanged(float rmsdB) {
+
+        }
+
+        @Override
+        public void onBufferReceived(byte[] buffer) {
+
+        }
+
+        @Override
+        public void onEndOfSpeech() {
+            Log.d(App.TAG, "onEndOfSpeech");
+        }
+
+        @Override
+        public void onError(int error) {
+            String message = "error:" + error;
+            Log.d(App.TAG, message);
+            Toast.makeText(FullscreenActivity.this, message, Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onResults(Bundle results) {
+            List<String> recData = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+            Log.d(App.TAG, "speech recognition: " + recData.toString());
+            if (recData.size() > 0) {
+                String message = recData.get(0);
+                Toast.makeText(FullscreenActivity.this, message, Toast.LENGTH_LONG).show();
+                String answer = mBrain.answer(message);
+                mAudioCommander.speak(answer);
+            }
+        }
+
+        @Override
+        public void onPartialResults(Bundle partialResults) {
+
+        }
+
+        @Override
+        public void onEvent(int eventType, Bundle params) {
+
+        }
+    }
+
+    private class AsuradaSensorEventListenr implements SensorEventListener {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
+                float[] values = event.values;
+                Log.d(App.TAG, Arrays.toString(values));
+                if (values[0] < event.sensor.getMaximumRange()) {
+                    // detect near state
+                    startInteraction();
+                }
+            }
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+
     }
 }

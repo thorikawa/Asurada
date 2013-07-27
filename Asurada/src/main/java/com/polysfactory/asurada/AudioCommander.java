@@ -38,8 +38,8 @@ public class AudioCommander {
                     if (tts.isLanguageAvailable(locale) >= TextToSpeech.LANG_AVAILABLE) {
                         tts.setLanguage(locale);
                         tts.setPitch(1.0F);
-                        tts.setSpeechRate(0.7F);
-                        // tts.setSpeechRate(1.0F);
+                        //tts.setSpeechRate(0.7F);
+                        tts.setSpeechRate(1.0F);
                     } else {
                         Log.e(App.TAG, "Error SetLocale");
                     }
