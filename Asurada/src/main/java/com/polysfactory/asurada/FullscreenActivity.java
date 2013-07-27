@@ -21,7 +21,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -66,6 +65,7 @@ public class FullscreenActivity extends Activity {
     private Sensor mProximitySensor;
     private AsuradaSensorEventListenr mProximitySensorEventListener;
     private Brain mBrain;
+    private Brain.BrainListener mBrainListner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,7 +151,8 @@ public class FullscreenActivity extends Activity {
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         mAudioCommander = new AudioCommander(this);
 
-        mBrain = new Brain();
+        mBrain = new Brain(this.getApplicationContext());
+        mBrain.setBrainListener(new AsuradaBrainListenr());
 
         //mAudioCommander.speak("Hey My name is Asurada!");
     }
@@ -271,8 +272,7 @@ public class FullscreenActivity extends Activity {
             if (recData.size() > 0) {
                 String message = recData.get(0);
                 Toast.makeText(FullscreenActivity.this, message, Toast.LENGTH_LONG).show();
-                String answer = mBrain.answer(message);
-                mAudioCommander.speak(answer);
+                mBrain.ask(message);
             }
         }
 
@@ -303,6 +303,12 @@ public class FullscreenActivity extends Activity {
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }
+    }
 
+    private class AsuradaBrainListenr implements Brain.BrainListener {
+        @Override
+        public void onAnswer(String answer) {
+            mAudioCommander.speak(answer);
+        }
     }
 }

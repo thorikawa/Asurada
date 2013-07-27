@@ -31,3 +31,5 @@ proguard/
 */build/
 
 .DS_Store
+
+setting.properties
